@@ -1,7 +1,7 @@
 {
   "name": "mongo_backed_rest_api",
   "version": "1.0.0",
-  "description": "Mongo Backed REST API ========================== To complete this assignment:   * fork this repository (the sub module for this specific assignment)   * clone down your fork   * place all of your work in a folder that is your full name, use `_`s instead of spaces   * push back up to your fork   * create a pull request back to the original repo   * submit a link to the PR in canvas",
+  "description": "Mongo Backed REST API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/jennypollack/mongo_backed_rest_api/issues"
   },
-  "homepage": "https://github.com/jennypollack/mongo_backed_rest_api#readme"
+  "homepage": "https://github.com/jennypollack/mongo_backed_rest_api#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp-jshint": "^1.12.0",
+    "gulp-mocha": "^2.1.3",
+    "mocha": "^2.3.3"
+  }
 }
