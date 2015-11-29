@@ -18,8 +18,14 @@
   "homepage": "https://github.com/jennypollack/mongo_backed_rest_api#readme",
   "devDependencies": {
     "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
     "gulp-jshint": "^1.12.0",
     "gulp-mocha": "^2.1.3",
     "mocha": "^2.3.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.5"
   }
 }
