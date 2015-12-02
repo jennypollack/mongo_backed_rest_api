@@ -2,7 +2,7 @@ module.exports = function(app) {
   app.controller('SongsController', ['$scope', '$http', function($scope, $http) {
     $scope.songs = [];
     $scope.errors = []; 
-    var defaults = {title: 'songtitle', artist: 'the beatles'};
+    var defaults = {title: 'yellow submarine', artist: 'the beatles'};
 
     $scope.newSong = Object.create(defaults);
 
@@ -16,6 +16,7 @@ module.exports = function(app) {
     };
 
     $scope.create = function(song) {
+      console.log('in here');
       $http.post('/api/songs', song)
         .then(function(res){
           $scope.songs.push(res.data);

@@ -5,6 +5,7 @@ var error = require(__dirname + '/../lib/error');
 
 var songRouter = module.exports = exports = express.Router();
 
+//not sure why this is here or what it does
 songRouter.get('/', function(req, res){
   res.sendFile(__dirname + '/../public/index.html');
 });
