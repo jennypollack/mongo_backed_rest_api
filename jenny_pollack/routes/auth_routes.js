@@ -25,7 +25,7 @@ authRouter.post('/signup', jsonParser, function(req, res){
 		} else{
 			console.log('username already in use'); 
 		}
-	})
+	});
 });
 
 authRouter.get('/signin', basicHttp, function(req, res) {
