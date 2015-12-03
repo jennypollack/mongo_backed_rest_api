@@ -16,15 +16,16 @@
 // //     });
 // //   });
 
-//   before(function(done) {
-//     var songData = {title: "testtitle", artist:"testart"};
-//     chai.request('localhost:3000')
-//       .post('/songs')
-//       .send(songData)
-//       .end(function(err, res) {
-//         done();
-//       });
-//   });
+
+  before(function(done) {
+    var songData = {title: "testtitle", artist:"testartist"};
+    chai.request('localhost:3000')
+      .post('/songs')
+      .send(songData)
+      .end(function(err, res) {
+        done();
+      });
+  });
 
 //   it('should create a song', function(done) {
 //     var songData1 = {title: 'songname', artist: 'alt-j'};
