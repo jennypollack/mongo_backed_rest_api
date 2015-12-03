@@ -6,19 +6,25 @@
   <link rel="stylesheet" href="styles.min.css">
 </head>
 <body data-ng-app="SongsApp">
+
   <main data-ng-controller="SongsController" data-ng-init="getAll()">
   <ul id="songlist">
       <li data-ng-repeat="song in songs">
-        {{song.title}}
+        {{song.title}} {{song.artist}}
       </li>
   </ul>
   <form name="newSongForm" data-ng-submit="create(newSong)">
     <label for="newSongTitle"> Title:
-      <input type="text" id="newSongTitle" data-ng-model="newSong.title">
+      <input type="text" id="newSongTitle" required data-ng-model="newSong.title" placeholder="title">
     </label>
-    <button type="submit">Create New Song</button>
+    <label for="newSongArtist"> Artist:
+      <input type="text" id="newSongArtist" required data-ng-model="newSong.artist" placeholder="artist">
+    </label>
+    <button type="submit" data-ng-disabled="newSongForm.$invalid">Create New Song</button>
   </form>
 </main>
 <script src="/bundle.js"></script>
 </body>
 </html>
+
+ 

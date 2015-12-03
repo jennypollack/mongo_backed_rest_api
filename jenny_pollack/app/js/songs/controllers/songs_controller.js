@@ -4,7 +4,7 @@ module.exports = function(app) {
     $scope.errors = []; 
     var defaults = {title: 'yellow submarine', artist: 'the beatles'};
 
-    $scope.newSong = Object.create(defaults);
+    $scope.newSong = null;
 
     $scope.getAll = function() {
       $http.get('/api/songs')
@@ -20,7 +20,7 @@ module.exports = function(app) {
       $http.post('/api/songs', song)
         .then(function(res){
           $scope.songs.push(res.data);
-          $scope.newSong = Object.create(defaults);
+          $scope.newSong = null;
       }, function(err) {
           console.log(err.data); 
       });
