@@ -1,0 +1,1 @@
+require('./songs_controller_tests');
