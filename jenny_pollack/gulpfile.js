@@ -2,8 +2,27 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var webpack = require('webpack-stream');
+var minifyCss = require('gulp-minify-css');
+var concatCss = require('gulp-concat-css');
+var gulpWatch = require('gulp-watch');
+
 var appFiles = ['index.js', 'lib/**/*.js', 'bin/**/*.js', 'models/**/*.js', 'routes/**/*.js'];
 var testFiles = ['./test/**/*.js'];
+var cssFiles = ['']
+
+gulp.task('css:dev', function(){
+  return gulp.src([
+    'app/css/base.css',
+    'app/css/layout.css',
+    'app/css/module.css'])
+    .pipe(concatCss('styles.min.css'))
+    .pipe(minifyCss())
+    .pipe(gulp.dest('build/'));
+});
+
+gulp.task('css:watch', function(){
+  gulp.watch('./app/css/**/*.css', ['css:dev']);
+});
 
 gulp.task('jshint:test', function() {
   return gulp.src(testFiles)
@@ -54,6 +73,6 @@ gulp.task('webpack:dev', function() {
   .pipe(gulp.dest('build/'));
 });
 
-gulp.task('build:dev', ['webpack:dev', 'static:dev']);
+gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
 gulp.task('default', ['jshint', 'mocha', 'build:dev']);
