@@ -19,7 +19,7 @@ userSchema.methods.hashPassword = function(password) {
 
 userSchema.methods.checkPassword = function(password) {
   return bcrypt.compareSync(password, this.auth.basic.password);
-}
+};
 
 userSchema.methods.generateToken = function(callback) {
   var id = this._id;

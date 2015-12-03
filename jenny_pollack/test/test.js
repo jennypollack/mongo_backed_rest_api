@@ -17,7 +17,7 @@ describe('drop db after', function() {
   });
 
   before(function(done) {
-    var songData = {title: "testtitle", artist:"testart"};
+    var songData = {title: "testtitle", artist:"testartist"};
     chai.request('localhost:3000')
       .post('/songs')
       .send(songData)
