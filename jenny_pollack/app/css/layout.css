@@ -1,0 +1,24 @@
+button {
+	-moz-box-shadow: 0px 0px 0px 0px #9fb4f2;
+	-webkit-box-shadow: 0px 0px 0px 0px #9fb4f2;
+	box-shadow: 0px 0px 0px 0px #9fb4f2;
+	background-color:#7892c2;
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:13px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:3px 13px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #283966;
+}
+.button:hover {
+	background-color:#476e9e;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
