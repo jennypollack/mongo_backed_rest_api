@@ -8,7 +8,7 @@ var gulpWatch = require('gulp-watch');
 
 var appFiles = ['index.js', 'lib/**/*.js', 'bin/**/*.js', 'models/**/*.js', 'routes/**/*.js'];
 var testFiles = ['./test/**/*.js'];
-var cssFiles = ['']
+var cssFiles = ['app/css/*.css']
 
 gulp.task('css:dev', function(){
   return gulp.src([

@@ -13,7 +13,6 @@ songRouter.get('/', function(req, res){
 songRouter.get('/songs', function(req, res) {
   Song.find({}, function(err, data) {
     if (err) return error(err, res);
-    console.log('gettin all');
     res.json(data);
   });
 });
