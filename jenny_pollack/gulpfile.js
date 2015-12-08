@@ -5,6 +5,8 @@ var webpack = require('webpack-stream');
 var minifyCss = require('gulp-minify-css');
 var concatCss = require('gulp-concat-css');
 var gulpWatch = require('gulp-watch');
+var sass = require('gulp-sass');
+var maps = require('gulp-sourcemaps'); 
 
 var appFiles = ['index.js', 'lib/**/*.js', 'bin/**/*.js', 'models/**/*.js', 'routes/**/*.js'];
 var testFiles = ['./test/**/*.js'];
