@@ -83,6 +83,7 @@
 
 	var songsApp = angular.module('SongsApp', []);
 	//require('./controlalers/controllers')(bearStreamApp);
+	//require('./directives/directives')(songsApp); 
 	__webpack_require__(4)(songsApp);
 
 /***/ },
@@ -29128,11 +29129,13 @@
 	    var defaults = {title: 'yellow submarine', artist: 'the beatles'};
 
 	    $scope.newSong = null;
+	    saveSong = {};
 
 	    $scope.getAll = function() {
 	      $http.get('/api/songs')
 	        .then(function(res) {
 	          $scope.songs = res.data;
+	          console.log(res.data);
 	        }, function(err) {
 	          console.log(err.data);
 	        });
@@ -29160,6 +29163,21 @@
 	      });
 	    };
 
+
+	    $scope.editSong = function(song){
+	      saveSong.title = song.title;
+	      saveSong.artist = song.artist;
+
+	      song.editing = true;
+	    };
+
+	    $scope.cancelEdit = function(song){
+	      song.editing = false;
+	      song.title = saveSong.title;
+	      song.artist = saveSong.artist;
+
+	    };
+
 	    $scope.remove = function(song) {
 	      $scope.songs.splice($scope.songs.indexOf(song), 1); 
 	      $http.delete('/api/songs/' + song._id)
@@ -29172,6 +29190,7 @@
 	        $scope.getAll(); 
 	       });
 	    };
+
 	    
 	  }]);
 	};

@@ -1,0 +1,13 @@
+@import "variables";
+
+body {
+  background-color: $primary-color;
+}
+
+#songlist {
+  background-color: $secondary-color;
+}
+
+button {
+	color: $accent-color;
+}

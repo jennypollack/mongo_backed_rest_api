@@ -6,7 +6,7 @@ var minifyCss = require('gulp-minify-css');
 var concatCss = require('gulp-concat-css');
 var gulpWatch = require('gulp-watch');
 var sass = require('gulp-sass');
-var maps = require('gulp-sourcemaps'); 
+var maps = require('gulp-sourcemaps');
 
 var appFiles = ['index.js', 'lib/**/*.js', 'bin/**/*.js', 'models/**/*.js', 'routes/**/*.js'];
 var testFiles = ['./test/**/*.js'];
@@ -16,7 +16,8 @@ gulp.task('css:dev', function(){
   return gulp.src([
     'app/css/base.css',
     'app/css/layout.css',
-    'app/css/module.css'])
+    'app/css/module.css',
+    'app/css/state.css'])
     .pipe(concatCss('styles.min.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest('build/'));
@@ -25,6 +26,16 @@ gulp.task('css:dev', function(){
 gulp.task('css:watch', function(){
   gulp.watch('./app/css/**/*.css', ['css:dev']);
 });
+
+gulp.task('sass:dev', function() {
+    gulp.src('./app/sass/application.scss')
+    .pipe(maps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(minifyCss())
+    .pipe(maps.write('./'))
+    .pipe(gulp.dest('build/'));
+});
+
 
 gulp.task('jshint:test', function() {
   return gulp.src(testFiles)
@@ -85,6 +96,8 @@ gulp.task('webpack:test', function() {
   .pipe(gulp.dest('test/client/'));
 });
 
-gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev']);
+
+gulp.task('build:dev', ['webpack:dev', 'static:dev', 'css:dev', 'webpack:test', 'sass:dev']);
+gulp.task('webpack', ['webpack:dev', 'webpack:test']);
 gulp.task('jshint', ['jshint:test', 'jshint:app']);
 gulp.task('default', ['jshint', 'mocha', 'build:dev']);
