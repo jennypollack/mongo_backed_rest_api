@@ -6,6 +6,9 @@
   <title>Single Resource API</title>
 </head>
 <body data-ng-app="SongsApp">
+
+  <div data-dummy-directive data-greeting="hello world"></div>
+
   <main data-ng-controller="SongsController" data-ng-init="getAll()">
   <form name="newSongForm" data-ng-submit="create(newSong)">
     <label for="newSongTitle"> Title:
