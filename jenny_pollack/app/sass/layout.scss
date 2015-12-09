@@ -14,12 +14,15 @@ body {
 
 #songlist {
   background-color: $secondary-color;
+  color: $font-color;
   @include sample;
 }
 
 button {
-	color: $accent-color;
-	border: 1px solid black; 
+	
+	color: $font-color;
+	border: 1px solid; 
+	border-color: $accent-color; 
 	border-radius: 3px;
 	margin: 5px;
 	padding: 3px;
