@@ -1,13 +1,26 @@
 @import "variables";
 
+@mixin sample {
+  font-size: $font-base;
+}
+
+p {
+  @include sample;
+}
+
 body {
   background-color: $primary-color;
 }
 
 #songlist {
   background-color: $secondary-color;
+  @include sample;
 }
 
 button {
 	color: $accent-color;
+	border: 1px solid black; 
+	border-radius: 3px;
+	margin: 5px;
+	padding: 3px;
 }
