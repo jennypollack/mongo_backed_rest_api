@@ -1,0 +1,19 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans|Slabo+27px"
+
+@import button
+@import tapir
+
+$header-font: 'Slabo 27px', sans-serif
+$content-font: 'Open Sans', serif
+
+body
+  background: #f2f2f2
+  font-family: $content-font
+
+h1, h2
+  font-family: $header-font
+
+ul
+  list-style: none
+button
+  @include default-button
