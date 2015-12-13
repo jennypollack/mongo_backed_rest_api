@@ -18,7 +18,7 @@ module.exports = function(app) {
     };
 
     $scope.create = function(song) {
-      console.log('in here');
+      console.log('creating new song');
       $http.post('/api/songs', song)
         .then(function(res){
           $scope.songs.push(res.data);

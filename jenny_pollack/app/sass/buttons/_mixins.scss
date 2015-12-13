@@ -1,0 +1,4 @@
+@mixin btn-maker($bg: $primary-color, $txt: $accent-color){
+	background-color: $bg;
+	color: $txt; 
+}
