@@ -1,0 +1,35 @@
+<section data-ng-controller="SongsController" data-ng-init="getAll()">
+  <ul id="errorslist">
+    <li data-ng-repeat="error in errors">{{error}}</li>
+  </ul>
+
+  <div data-song-transclude-directive data-message-one="another message">
+    here is some text
+  </div>
+
+  <div data-song-form-directive
+    data-button-text="Create New Song"
+    data-form-name="newSongForm"
+    data-heading-text="Create A New Song"
+    data-song="newSong"
+    data-save="create(song)"
+  ></div>
+
+  <div data-list-directive data-title="songs">
+    <li data-ng-repeat="song in songs">
+
+      <div data-song-directive data-song="song"></div>
+      <div data-song-form-directive
+        data-ng-if="song.editing"
+        data-form-name="edit{{song._id}}"
+        data-song="song"
+        data-heading-text="Editing {{song.title}}" > 
+        <button data-ng-click="cancel()"> Cancel Editing</button>
+        <button data-ng-click="update(song)"> submit edit</button>
+      </div>
+
+      <button data-ng-if="!song.editing" data-ng-click="song.editing = true">change song info</button>
+      <button data-ng-if="!song.editing" data-ng-click="remove(song)">remove song from playlist</button>
+    </li>
+  </ul>    
+</section>

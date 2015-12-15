@@ -17,6 +17,15 @@ describe('songs controller', function() {
     var controller = $ControllerConstructor('SongsController', {$scope: $scope});
     expect(typeof $scope).toBe('object');
     expect(typeof controller).toBe('object');
-    expect(Array.isArray($scope.bears)).toBe(true);
+    expect(Array.isArray($scope.songs)).toBe(true);
+  });
+
+  it('should be able to cancel editing', function(){
+    var controller = $ControllerConstructor('SongsController', {$scope: $scope});
+    $scope.songs.push({_id:1, title: 'test song'});
+    var song = $scope.songs[0];
+    expect(song.title).toBe('test song');
+    $scope.editSong(song);
+    expect(song.editing).toBe(true);
   });
 });

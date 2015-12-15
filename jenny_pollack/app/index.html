@@ -2,47 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="application.css"> 
-  <!--<link rel="stylesheet" type="text/css" href="styles.min.css">-->
-  <title>Single Resource API</title>
+  <title>song Wrangling</title>
 </head>
 <body data-ng-app="SongsApp">
-
-  <div data-dummy-directive data-greeting="hello world"></div>
-
-  <main data-ng-controller="SongsController" data-ng-init="getAll()">
-  <form name="newSongForm" data-ng-submit="create(newSong)">
-    <label for="newSongTitle"> Title:
-      <input type="text" id="newSongTitle" data-ng-model="newSong.title">
-    </label>
-    <label for="newSongArtist"> Artist:
-      <input type="text" id="newSongArtist" data-ng-model="newSong.artist">
-    </label>
-    <button type="submit">Create New Song</button>
-  </form>
-  
-    <ul id="songlist">
-      <li data-ng-repeat="song in songs">
-        {{song.title}} {{song.artist}}
-
-        <form name="songForm{{song._id}}" data-ng-submit="update(song)" data-ng-if="song.editing">
-          <h2>Modify Song Data</h2>
-
-          <label for="songTitle{song.title}}">Title:</label>
-          <input type="text" id="songTitle{{song.title}}" required data-ng-model="song.title">
-
-          <label for="songArtist{{song.artist}}"> Artist:</label>
-          <input type="text" id="songArtist{{song.artist}}" required data-ng-model="song.artist">
-
-          <button type ="submit"> Edit Song</button>
-          <button data-ng-click="cancelEdit(song)"> Cancel Edit</button>
-        </form>
-
-        <button data-ng-if="!song.editing" data-ng-click="editSong(song)"> Edit Song</button>
-        <button data-ng-if="!song.editing" data-ng-click="remove(song)"> Delete Song</button>
-    </li>
-    </ul>
-
-</main>
-<script src="/bundle.js"></script>
+  <main data-ng-view></main>
+  <script src="/bundle.js"></script>
 </body>
+</html>

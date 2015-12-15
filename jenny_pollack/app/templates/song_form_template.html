@@ -1,0 +1,14 @@
+<div>
+  <form name="{{formName}}" data-ng-submit="save({song: song})">
+    <h2>{{headingText}}</h2>
+
+    <label for="songTitle">Title:</label>
+    <input type="text" id="songTitle" required data-ng-model="song.title">
+    
+    <label for="songArtist">Artist: </label>
+    <input type="text" id="songArtist" data-ng-model="song.artist" placeholder="teh beatles">
+
+    <button type="submit">{{buttonText}}</button>
+  </form>
+  <ng-transclude></ng-transclude>
+</div>

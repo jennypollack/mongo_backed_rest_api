@@ -1,30 +1,28 @@
 module.exports = function(app) {
-  app.controller('SongsController', ['$scope', '$http', function($scope, $http) {
+  app.controller('SongsController', ['$scope', '$http', 'cfResource', function($scope, $http, cfResource) {
     $scope.songs = [];
-    $scope.errors = []; 
-    var defaults = {title: 'yellow submarine', artist: 'the beatles'};
+    $scope.errors = [];
+    $scope.defaults = {title: 'yellow submarine', artist: 'the beatles'};
+    $scope.newSong = angular.copy($scope.defaults);
+    $scope.messageOne = "hello from inside the controller";
+    var songsResource = cfResource('songs');
 
-    $scope.newSong = null;
-    saveSong = {};
+    //$scope.newSong = null;
+    //$scope.saveSong = null;
 
     $scope.getAll = function() {
-      $http.get('/api/songs')
-        .then(function(res) {
-          $scope.songs = res.data;
-          console.log(res.data);
-        }, function(err) {
-          console.log(err.data);
-        });
+      songsResource.getAll(function(err, data) {
+        if (err) return err;
+
+        $scope.songs = data;
+      });
     };
 
     $scope.create = function(song) {
-      console.log('creating new song');
-      $http.post('/api/songs', song)
-        .then(function(res){
-          $scope.songs.push(res.data);
-          $scope.newSong = null;
-      }, function(err) {
-          console.log(err.data); 
+      songsResource.create(song, function(err, data){
+        if (err) return err;
+        $scope.songs.push(data);
+        $scope.newSong = angular.copy($scope.defaults); 
       });
     };
 
@@ -39,21 +37,19 @@ module.exports = function(app) {
       });
     };
 
-
-    $scope.editSong = function(song){
-      saveSong.title = song.title;
-      saveSong.artist = song.artist;
-
+    $scope.edit = function (song) {
+      //console.log($scope);
       song.editing = true;
+      $scope.copy = angular.copy($scope.data);
     };
 
-    $scope.cancelEdit = function(song){
+    $scope.cancel = function () {
       song.editing = false;
-      song.title = saveSong.title;
-      song.artist = saveSong.artist;
-
+      $scope.data = $scope.copy;
+      console.log($scope)
+      $scope.newSong = song;
+      
     };
-
     $scope.remove = function(song) {
       $scope.songs.splice($scope.songs.indexOf(song), 1); 
       $http.delete('/api/songs/' + song._id)
@@ -66,7 +62,7 @@ module.exports = function(app) {
         $scope.getAll(); 
        });
     };
-
     
   }]);
 };
+
